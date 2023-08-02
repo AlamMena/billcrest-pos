@@ -1,13 +1,7 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { FirebaseError } from "firebase/app";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,8 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
-import { auth } from "@/lib/Firebase";
-import { signIn } from "next-auth/react";
+import { signIn } from "../actions";
 
 const FormSchema = z.object({
   username: z.string().email().min(2, {
@@ -39,17 +32,7 @@ export default function Login() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      await signIn("credentials", {
-        email: data.username,
-        password: data.password,
-        redirect: true,
-        callbackUrl: "/home",
-      });
-
-      toast({
-        title: "User logged",
-        description: "Your user has been logged",
-      });
+      await signIn(data.username, data.password);
     } catch (error) {
       console.log("hi", error);
       toast({

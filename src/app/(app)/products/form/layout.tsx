@@ -30,7 +30,7 @@ interface SettingsLayoutProps {
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
-      <div className=" space-y-6 max-w-3xl md:block">
+      <div className="w-full space-y-6 max-w-4xl md:block">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Product</h2>
           <p className="text-muted-foreground">
@@ -38,7 +38,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
           </p>
         </div>
         <Separator orientation="horizontal" className="my-6" />
-        <div className="flex-1 lg:max-w-2xl">{children}</div>
+        <div className="flex-1 lg:max-w-3xl">{children}</div>
       </div>
     </>
   );

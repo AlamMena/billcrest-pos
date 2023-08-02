@@ -1,23 +1,16 @@
 import { DataTableDemo } from "@/components/data-table";
 import {
-  TypographyH1,
-  TypographyH2,
   TypographyH3,
-  TypographyLarge,
   TypographyMuted,
   TypographySmall,
 } from "@/components/typography";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { auth } from "@/lib/Firebase";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import axiosInstance from "@/lib/axios-instance";
 import { ChevronRight, Plus } from "lucide-react";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 
 export default async function Page() {
-  const session = await getServerSession(authOptions);
-  console.log(session);
+  // const cat = await axiosInstance.get("https://cat-fact.herokuapp.com/facts");
 
   return (
     <div className="w-full flex flex-col space-y-8">

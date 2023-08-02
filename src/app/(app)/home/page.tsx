@@ -1,25 +1,13 @@
 "use client";
-import { auth } from "@/lib/Firebase";
-import { signOut, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { Suspense } from "react";
+
+import { signOut } from "@/app/(auth)/actions";
+import Loading from "../loading";
 
 export default function Home() {
-  const session = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/signin");
-    },
-  });
-  auth.onAuthStateChanged((credentials) => {
-    console.log("new one", credentials);
-  });
-  console.log("credentials", auth.currentUser);
   return (
     <div className="p-8">
-      <Suspense>
-        <div className="text-white">{JSON.stringify(session)}</div>
-      </Suspense>
+      <div className="text-white"></div>
+      <Loading />
       <button className="text-white" onClick={() => signOut()}>
         Logout
       </button>

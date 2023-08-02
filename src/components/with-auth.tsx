@@ -1,6 +1,6 @@
 "use client";
 import Login from "@/app/(auth)/signup/page";
-import { auth } from "@/lib/Firebase";
+import { auth } from "@/lib/firebase";
 import { User } from "firebase/auth";
 import { useState } from "react";
 import { ReactNode } from "react";

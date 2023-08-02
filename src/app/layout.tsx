@@ -1,5 +1,4 @@
-import SessionProvider from "@/components/session-provider";
-import { Toaster } from "@/components/ui/toaster";
+import "@flaticon/flaticon-uicons/css/all/all.css";
 import "./globals.css";
 
 export const metadata = {
@@ -14,9 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <SessionProvider>{children}</SessionProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import Image from "next/image";
 
 export default function MobileNavigation() {
   const pathname = usePathname();
@@ -16,7 +17,14 @@ export default function MobileNavigation() {
       </SheetTrigger>
 
       <SheetContent side={"left"}>
-        <aside className="fixed py-8 px-2 flex flex-col space-y-4">
+        <aside className="fixed flex flex-col space-y-4">
+          <Image
+            src={"/assets/icons/logo.svg"}
+            height={40}
+            width={40}
+            alt="logo"
+            className="ml-4"
+          />
           {navConfig.map((item, index) => {
             const isActive = item.href === pathname;
             return (

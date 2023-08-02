@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/command";
 import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
+import MobileNavigation from "./mobile-navigation";
 
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false);
@@ -102,13 +103,17 @@ export default function TopBar({ className }: { className?: string }) {
         className
       )}
     >
-      <CommandMenu />
+      <div className="flex items-center space-x-4">
+        <MobileNavigation />
+        <CommandMenu />
+      </div>
+
       <div className="flex space-x-2">
         <Button size="icon" variant="ghost">
-          <Bell />
+          <i className="fi fi-rr-bell text-lg"></i>{" "}
         </Button>
         <Button size="icon" variant="ghost">
-          <Mail />
+          <i className="fi fi-rr-envelope text-lg"></i>
         </Button>
         <ThemeToggle />
         <Avatar className="w-8 h-8">

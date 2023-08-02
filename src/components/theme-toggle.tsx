@@ -19,8 +19,10 @@ export function ThemeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          {/* <SunIcon className="" /> */}
+          <i className="fi fi-rr-brightness text-xl rotate-0 scale-105  transition-all dark:-rotate-90 dark:scale-0"></i>
+          <i className="fi fi-rr-moon-stars text-xl absolute rotate-0 scale-0 transition-all dark:rotate-0 dark:scale-105"></i>
+          {/* <MoonIcon className="" /> */}
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>

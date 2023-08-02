@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
-import { auth } from "@/lib/Firebase";
+import { auth } from "@/lib/firebase";
 import { signIn } from "next-auth/react";
 
 const FormSchema = z.object({
