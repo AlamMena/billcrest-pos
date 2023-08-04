@@ -1,18 +1,17 @@
 "use client";
 import { navConfig } from "@/lib/nav-config";
-import clsx from "clsx";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./theme-toggle";
-import { TypographyH4, TypographyMuted, TypographySmall } from "./typography";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
+import { TypographySmall } from "./typography";
 import Image from "next/image";
+
+import React from "react";
+import { NavItem } from "./nav-item";
 
 export default function DesktopNavigation() {
   const pathname = usePathname();
+
   return (
-    <aside className=" hidden fixed md:flex flex-col w-60 border-r-2 border-dashed h-full bg-background space-y-4 p-4">
+    <aside className=" hidden fixed md:flex flex-col w-60 border-r-2 border-dashed h-full bg-background space-y-4 px-2 py-4">
       <Image
         src={"/assets/icons/logo.svg"}
         height={40}
@@ -20,27 +19,15 @@ export default function DesktopNavigation() {
         alt="logo"
         className="ml-4"
       />
-      {navConfig.map((section, index) => {
+      {navConfig.map((section, sectionIndex) => {
         return (
-          <div className="">
-            <TypographySmall>{section.title}</TypographySmall>
-            {section.childs.map((item) => {
-              const isActive =
-                item.href.split("/")[1] === pathname?.split("/")[1];
+          <div className="p-2" key={sectionIndex}>
+            <TypographySmall className=" block mb-4 font-semibold">
+              {section.title}
+            </TypographySmall>
+            {section.childs.map((item, itemIndex) => {
               return (
-                <Link href={item.href} key={index}>
-                  <Button
-                    // className="w-full justify-start"
-                    className={clsx({
-                      ["flex mr-2 w-full justify-start items-center"]: true,
-                      ["text-muted-foreground"]: !isActive,
-                    })}
-                    variant={isActive ? "secondary" : "ghost"}
-                  >
-                    <i className="mr-2 text-xl">{item.icon}</i>
-                    {item.title}
-                  </Button>
-                </Link>
+                <NavItem key={itemIndex} item={item} pathname={pathname} />
               );
             })}
           </div>

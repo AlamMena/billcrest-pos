@@ -1,4 +1,5 @@
-import { DataTableDemo } from "@/components/data-table";
+import { DataTable } from "@/components/data-table";
+import { columns } from "@/components/products/columns";
 import {
   TypographyH3,
   TypographyMuted,
@@ -10,8 +11,7 @@ import { ChevronRight, Plus } from "lucide-react";
 import Link from "next/link";
 
 export default async function Page() {
-  // const cat = await axiosInstance.get("https://cat-fact.herokuapp.com/facts");
-
+  const { data: brands } = await axiosInstance.get("brands?Page=1&Limit=10");
   return (
     <div className="w-full flex flex-col space-y-8">
       <div className="flex flex-row justify-between">
@@ -30,7 +30,7 @@ export default async function Page() {
           </Button>
         </Link>
       </div>
-      <DataTableDemo />
+      <DataTable columns={columns} data={brands} />
     </div>
   );
 }

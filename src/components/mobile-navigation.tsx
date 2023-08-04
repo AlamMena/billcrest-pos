@@ -7,6 +7,14 @@ import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import Image from "next/image";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible";
+import { TypographySmall } from "./typography";
+import React from "react";
+import { NavItem } from "./nav-item";
 
 export default function MobileNavigation() {
   const pathname = usePathname();
@@ -25,22 +33,18 @@ export default function MobileNavigation() {
             alt="logo"
             className="ml-4"
           />
-          {navConfig.map((item, index) => {
-            const isActive = item.href === pathname;
+          {navConfig.map((section, sectionIndex) => {
             return (
-              <Link href={item.href} key={index}>
-                <Button
-                  // className="w-full justify-start"
-                  className={clsx({
-                    ["mr-2 w-full justify-start"]: true,
-                    ["text-muted-foreground"]: !isActive,
-                  })}
-                  variant={isActive ? "secondary" : "ghost"}
-                >
-                  <i className="mr-2">{item.icon}</i>
-                  {item.title}
-                </Button>
-              </Link>
+              <div className="p-2" key={sectionIndex}>
+                <TypographySmall className=" block mb-4 font-semibold">
+                  {section.title}
+                </TypographySmall>
+                {section.childs.map((item, itemIndex) => {
+                  return (
+                    <NavItem key={itemIndex} item={item} pathname={pathname} />
+                  );
+                })}
+              </div>
             );
           })}
         </aside>

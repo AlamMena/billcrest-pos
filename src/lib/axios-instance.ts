@@ -1,7 +1,9 @@
 import { getToken } from "@/app/(auth)/actions";
 import axios, { AxiosError } from "axios";
 
-const axiosInstance = axios.create();
+const axiosInstance = axios.create({
+  baseURL: "https://fastbilling.azurewebsites.net/api",
+});
 
 axiosInstance.interceptors.request.use(
   async function (config) {

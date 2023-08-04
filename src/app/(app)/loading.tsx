@@ -14,7 +14,7 @@ export default function Loading() {
 
   return (
     <div className="w-full h-full">
-      <div className="">Home</div>
+      <div className="">Loading page</div>
     </div>
   );
 }

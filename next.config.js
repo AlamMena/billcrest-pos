@@ -4,7 +4,7 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ["cdn-icons-png.flaticon.com"],
+    domains: ["cdn-icons-png.flaticon.com", "api-prod-minimal-v510.vercel.app"],
   },
 };
 
