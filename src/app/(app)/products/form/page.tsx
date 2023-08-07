@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PricingForm from "../../../../components/products/pricing-form";
 import PropertiesForm from "../../../../components/products/properties-form";
 import { cn } from "@/lib/utils";
+import { FormSidebar } from "@/components/form-sidebar";
 
 export const productFormSchema = z.object({
   name: z.string().min(2).max(50),
@@ -50,73 +51,25 @@ export default function ProductForm() {
   }
   return (
     <div className="w-full">
-      <Tabs
-        defaultValue="details"
-        className="flex flex-col md:flex-row space-x-4 w-full"
-      >
-        <TabsList className="h-full md:flex-col md:space-y-2 flex items-center md:items-start md:justify-start bg-background">
-          <TabsTrigger
-            className="w-full justify-center md:justify-start"
-            value="details"
-            asChild
-          >
-            <Button
-              variant={"ghost"}
-              className={cn(
-                "data-[state=active]:bg-muted hover:bg-muted w-full justify-start shadow-none"
-              )}
-            >
-              Details
-            </Button>
-          </TabsTrigger>
-          <TabsTrigger
-            className="w-full justify-center md:justify-start"
-            value="properties"
-            asChild
-          >
-            <Button
-              variant={"ghost"}
-              className={cn(
-                "data-[state=active]:bg-muted hover:bg-muted w-full justify-start shadow-none"
-              )}
-            >
-              Properties
-            </Button>
-          </TabsTrigger>
-          <TabsTrigger
-            className="w-full justify-center md:justify-start"
-            value="pricing"
-            asChild
-          >
-            <Button
-              variant={"ghost"}
-              className={cn(
-                "data-[state=active]:bg-muted hover:bg-muted w-full justify-start shadow-none"
-              )}
-            >
-              Pricing
-            </Button>
-          </TabsTrigger>
-        </TabsList>
-
+      <FormSidebar sections={["Details", "Properties", "Pricing"]}>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8 md:w-[700px]"
           >
-            <TabsContent value="details">
+            <TabsContent value="Details">
               <DetailsForm form={form} />
             </TabsContent>
-            <TabsContent value="properties">
+            <TabsContent value="Properties">
               <PropertiesForm form={form} />
             </TabsContent>
-            <TabsContent value="pricing">
+            <TabsContent value="Pricing">
               <PricingForm form={form} />
             </TabsContent>
             <Button type="submit">Submit</Button>
           </form>
         </Form>
-      </Tabs>
+      </FormSidebar>
     </div>
   );
 }

@@ -1,44 +1,43 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
-interface FormSideBarProps extends React.HTMLAttributes<HTMLElement> {
-  items: {
-    href: string;
-    title: string;
-  }[];
-}
-
-export function FormSidebar({ className, items, ...props }: FormSideBarProps) {
-  const pathname = usePathname();
-
+export function FormSidebar({
+  children,
+  sections,
+}: {
+  children: React.ReactNode;
+  sections: string[];
+}) {
   return (
-    <nav
-      className={cn(
-        "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
-        className
-      )}
-      {...props}
-    >
-      {items.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={cn(
-            buttonVariants({ variant: "ghost" }),
-            pathname === item.href
-              ? "bg-muted hover:bg-muted"
-              : "hover:bg-transparent hover:underline",
-            "justify-start"
-          )}
-        >
-          {item.title}
-        </Link>
-      ))}
-    </nav>
+    <div className="w-full">
+      <Tabs
+        defaultValue="details"
+        className="flex flex-col md:flex-row space-x-4 w-full"
+      >
+        <TabsList className="h-full md:flex-col md:space-y-2 mb-4 md:my-0 flex items-center md:items-start md:justify-start bg-background">
+          {sections.map((section, index) => {
+            return (
+              <TabsTrigger
+                value={section}
+                defaultValue={index === 0 ? section[0] : ""}
+                className="w-full justify-center md:justify-start "
+                asChild
+              >
+                <Button
+                  variant={"ghost"}
+                  className={cn(
+                    "md:w-52 w-full data-[state=active]:bg-muted hover:bg-muted  justify-start shadow-none"
+                  )}
+                >
+                  {section}
+                </Button>
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+        {children}
+      </Tabs>
+    </div>
   );
 }
