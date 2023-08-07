@@ -50,17 +50,20 @@ export default function ProductForm() {
   }
   return (
     <div className="w-full">
-      <Tabs defaultValue="details" className="flex space-x-4 w-full">
+      <Tabs
+        defaultValue="details"
+        className="flex flex-col md:flex-row space-x-4 w-full"
+      >
         <TabsList className="h-full md:flex-col md:space-y-2 flex items-center md:items-start md:justify-start bg-background">
           <TabsTrigger
-            value="details"
             className="w-full justify-center md:justify-start"
+            value="details"
             asChild
           >
             <Button
               variant={"ghost"}
               className={cn(
-                " w-44 data-[state=active]:bg-muted hover:bg-muted justify-start shadow-none"
+                "data-[state=active]:bg-muted hover:bg-muted w-full justify-start shadow-none"
               )}
             >
               Details
@@ -99,14 +102,14 @@ export default function ProductForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 w-[700px]"
+            className="space-y-8 md:w-[700px]"
           >
             <TabsContent value="details">
               <DetailsForm form={form} />
             </TabsContent>
             <TabsContent value="properties">
               <PropertiesForm form={form} />
-            </TabsContent>{" "}
+            </TabsContent>
             <TabsContent value="pricing">
               <PricingForm form={form} />
             </TabsContent>

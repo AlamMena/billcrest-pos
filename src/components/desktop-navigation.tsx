@@ -11,7 +11,7 @@ export default function DesktopNavigation() {
   const pathname = usePathname();
 
   return (
-    <aside className=" hidden fixed md:flex flex-col w-60 border-r-2 border-dashed h-full bg-background space-y-4 px-2 py-4">
+    <aside className=" hidden fixed md:flex flex-col w-60 border border-dashed h-full bg-background space-y-4 px-2 py-4">
       <Image
         src={"/assets/icons/logo.svg"}
         height={40}

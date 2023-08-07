@@ -1,5 +1,12 @@
 import { FormSidebar } from "@/components/form-sidebar";
+import PageHeader from "@/components/page-header";
+import {
+  TypographyH3,
+  TypographyMuted,
+  TypographySmall,
+} from "@/components/typography";
 import { Separator } from "@/components/ui/separator";
+import { ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -31,12 +38,11 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
       <div className="w-full space-y-6 max-w-4xl md:block">
-        <div className="space-y-0.5">
-          <h2 className="text-2xl font-bold tracking-tight">Product</h2>
-          <p className="text-muted-foreground">
-            Create or edit any product of your inventory
-          </p>
-        </div>
+        <PageHeader
+          title="Create a new product"
+          icon="fi fi-rr-boxes"
+          location={["Home", "Products", "New product"]}
+        />
         <Separator orientation="horizontal" className="my-6" />
         <div className="flex-1 lg:max-w-3xl">{children}</div>
       </div>

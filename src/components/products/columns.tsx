@@ -82,7 +82,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Price",
     cell: ({ row }) => (
       <div className=" font-medium">
-        {formatAmount(parseFloat(row.getValue("amount")))}
+        {formatAmount(parseFloat(row.getValue("price")))}
       </div>
     ),
   },
@@ -91,24 +91,24 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Cost",
     cell: ({ row }) => (
       <div className=" font-medium">
-        {formatAmount(parseFloat(row.getValue("amount")))}
+        {formatAmount(parseFloat(row.getValue("price")))}
       </div>
     ),
   },
   {
-    accessorKey: "benefit",
+    accessorKey: "marginBenefit",
     header: "Benefit",
     cell: ({ row }) => (
       <div className="font-medium">
-        {formatAmount(parseFloat(row.getValue("amount")))}
+        {formatAmount(parseFloat(row.getValue("price")))}
       </div>
     ),
   },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => <Badge>{row.getValue("status")}</Badge>,
-  },
+  // {
+  //   accessorKey: "status",
+  //   header: "Status",
+  //   cell: ({ row }) => <Badge>{row.getValue("status")}</Badge>,
+  // },
 
   {
     id: "actions",

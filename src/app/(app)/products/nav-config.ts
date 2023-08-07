@@ -58,7 +58,7 @@ export const navConfig: navSection[] = [
       {
         title: "Warehouses",
         icon: "fi fi-rr-box-open",
-        href: "/warehouses",
+        href: undefined,
         childs: [
           {
             title: "Reception",
