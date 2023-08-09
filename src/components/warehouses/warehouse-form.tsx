@@ -21,25 +21,23 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import FormSectionLayout, {
-  FormSectionFields,
-  FormSectionTitle,
-} from "../form-section";
-import { productFormSchema } from "./form";
+import { warehouseSchema } from "@/app/(app)/warehouses/form/page";
 
-export default function DetailsForm({
+export default function WarehouseForm({
   form,
 }: {
-  form: UseFormReturn<z.infer<typeof productFormSchema>>;
+  form: UseFormReturn<z.infer<typeof warehouseSchema>>;
 }) {
   return (
-    <FormSectionLayout>
-      <FormSectionTitle
-        title="Details"
-        subtitle="Handle basic informtaion of your product"
-      />
-      {/* <Separator orientation="horizontal" className="my-4" /> */}
-      <FormSectionFields>
+    <div className="w-full max-w-6xl">
+      <div className="flex flex-col space-y-2">
+        <TypographyH4>Details</TypographyH4>
+        <TypographyMuted>
+          Handle basic informtaion of your warehouse
+        </TypographyMuted>
+      </div>
+      <Separator orientation="horizontal" className="my-4" />
+      <div className="flex flex-col space-y-4 w-full">
         <FormField
           control={form.control}
           name="name"
@@ -47,10 +45,10 @@ export default function DetailsForm({
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="my new product" {...field} />
+                <Input placeholder="main warehouse" {...field} />
               </FormControl>
               <FormDescription>
-                This is your product display name.
+                This is your warehouse display name.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -66,18 +64,17 @@ export default function DetailsForm({
               <FormControl>
                 <Textarea
                   className=" resize-none"
-                  placeholder="product description"
+                  placeholder="warehouse description"
                   {...field}
                 />
               </FormControl>
               <FormDescription>
-                This is your product description.
+                This is your warehouse description.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-
         <div className="space-y-3">
           <TypographySmall>Images</TypographySmall>
           <Card>
@@ -101,7 +98,7 @@ export default function DetailsForm({
             </CardContent>
           </Card>
         </div>
-      </FormSectionFields>
-    </FormSectionLayout>
+      </div>
+    </div>
   );
 }

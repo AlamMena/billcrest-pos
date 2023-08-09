@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/data-table";
 import PageHeader from "@/components/page-header";
-import { columns } from "@/components/products/columns";
+import { productColumns } from "@/components/products/columns";
 import {
   TypographyH3,
   TypographyMuted,
@@ -24,7 +24,7 @@ export default async function Page() {
         buttonRef="/products/form"
         buttonTitle="New Product"
       />
-      <DataTable columns={columns} data={products.data} />
+      <DataTable columns={productColumns} data={products.data} />
     </>
   );
 }

@@ -28,7 +28,11 @@ import {
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
-import { productFormSchema } from "../../app/(app)/products/form/page";
+import FormSectionLayout, {
+  FormSectionFields,
+  FormSectionTitle,
+} from "../form-section";
+import { productFormSchema } from "./form";
 
 const categories = [
   { name: "English", id: 1 },
@@ -48,15 +52,13 @@ export default function PropertiesForm({
   form: UseFormReturn<z.infer<typeof productFormSchema>>;
 }) {
   return (
-    <div className=" max-w-6xl ">
-      <div className="flex flex-col space-y-2">
-        <TypographyH4>Properties</TypographyH4>
-        <TypographyMuted>
-          Handle the must important properties of your product
-        </TypographyMuted>
-      </div>
-      <Separator orientation="horizontal" className="my-4" />
-      <div className="flex flex-col space-y-4 w-full">
+    <FormSectionLayout>
+      <FormSectionTitle
+        title="Properties"
+        subtitle="Handle the must important properties of your product"
+      />
+      {/* <Separator orientation="horizontal" className="my-4" /> */}
+      <FormSectionFields>
         <FormField
           control={form.control}
           name="code"
@@ -220,7 +222,7 @@ export default function PropertiesForm({
             )}
           />
         </div>
-      </div>
-    </div>
+      </FormSectionFields>
+    </FormSectionLayout>
   );
 }

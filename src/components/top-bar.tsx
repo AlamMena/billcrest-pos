@@ -108,15 +108,15 @@ export default function TopBar({ className }: { className?: string }) {
         <CommandMenu />
       </div>
 
-      <div className="flex space-x-2">
+      <div className="flex ">
         <Button size="icon" variant="ghost">
-          <i className="fi fi-rr-bell text-lg"></i>{" "}
+          <i className="fi fi-rr-bell text-"></i>{" "}
         </Button>
         <Button size="icon" variant="ghost">
-          <i className="fi fi-rr-envelope text-lg"></i>
+          <i className="fi fi-rr-envelope text-lg "></i>
         </Button>
         <ThemeToggle />
-        <Avatar className="w-8 h-8">
+        <Avatar className="w-8 h-8 ml-4">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>

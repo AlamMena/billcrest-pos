@@ -13,7 +13,11 @@ import { TypographyH4, TypographyMuted } from "@/components/typography";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { UseFormReturn } from "react-hook-form";
-import { productFormSchema } from "../../app/(app)/products/form/page";
+import FormSectionLayout, {
+  FormSectionFields,
+  FormSectionTitle,
+} from "../form-section";
+import { productFormSchema } from "./form";
 
 export default function PricingForm({
   form,
@@ -21,15 +25,13 @@ export default function PricingForm({
   form: UseFormReturn<z.infer<typeof productFormSchema>>;
 }) {
   return (
-    <div className="max-w-6xl">
-      <div className="flex flex-col space-y-2">
-        <TypographyH4>Pricing</TypographyH4>
-        <TypographyMuted>
-          Handle all the cost and profit of your product
-        </TypographyMuted>
-      </div>
-      <Separator orientation="horizontal" className="my-4" />
-      <div className="flex flex-col space-y-4 w-full">
+    <FormSectionLayout>
+      <FormSectionTitle
+        title="Pricing"
+        subtitle="Handle all the cost and profit of your product"
+      />
+      {/* <Separator orientation="horizontal" className="my-4" /> */}
+      <FormSectionFields>
         <FormField
           control={form.control}
           name="price"
@@ -127,7 +129,7 @@ export default function PricingForm({
             </FormItem>
           )}
         />
-      </div>
-    </div>
+      </FormSectionFields>
+    </FormSectionLayout>
   );
 }

@@ -37,14 +37,14 @@ interface SettingsLayoutProps {
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
-      <div className="w-full space-y-6 max-w-4xl md:block">
+      <div className="w-full space-y-6 md:block">
         <PageHeader
           title="Create a new product"
           icon="fi fi-rr-boxes"
           location={["Home", "Products", "New product"]}
         />
-        <Separator orientation="horizontal" className="my-6" />
-        <div className="flex-1 lg:max-w-3xl">{children}</div>
+        {/* <Separator orientation="horizontal" className="my-6" /> */}
+        <div className="flex-1">{children}</div>
       </div>
     </>
   );

@@ -20,7 +20,7 @@ export default async function Page({
         title="Warehouses"
         icon="fi fi-rr-box-open"
         location={["Home", "Warehouses"]}
-        // buttonRef="/products/form"
+        buttonRef="/warehouses/form"
         buttonTitle="New Warehouse"
       />
       <DataTable columns={columns} data={brands.data} />

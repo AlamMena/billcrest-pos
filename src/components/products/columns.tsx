@@ -23,7 +23,7 @@ export type Payment = {
   status: "pending" | "processing" | "success" | "failed";
   email: string;
 };
-export const columns: ColumnDef<Payment>[] = [
+export const productColumns: ColumnDef<Payment>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -49,15 +49,13 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "name",
     header: "Product",
     cell: ({ row }) => (
-      <div className="flex space-x-4 items-center my-2">
+      <div className="flex space-x-6 items-center my-2">
         <Image
           alt="product-image"
-          width={50}
-          height={50}
-          className=" rounded-xl shadow-md"
-          src={
-            "https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_1.jpg"
-          }
+          width={40}
+          height={40}
+          className=""
+          src={"https://cdn-icons-png.flaticon.com/128/685/685388.png"}
         />
         <div className="flex flex-col">
           <TypographySmall>2750 Cotu Classic Sneaker</TypographySmall>

@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Search } from "lucide-react";
 
 export function DataTable({ columns, data }: { columns: any; data: any[] }) {
   const searchParams = useSearchParams();
@@ -86,21 +87,25 @@ export function DataTable({ columns, data }: { columns: any; data: any[] }) {
 
   return (
     <div className="w-full">
-      {/* <div className="flex items-center my-4">
-        <Input placeholder="Filter emails..." className="max-w-sm " />
-      </div> */}
       <Card className="rounded-md border border-dashed">
         {/* <CardHeader>
        
         </CardHeader> */}
-        <CardContent className="px-0">
+        <CardContent className="p-4">
+          <div className="flex items-center mb-4 relative">
+            <Search className="h-4 w-4 opacity-50 absolute ml-2 mr-4" />
+            <Input placeholder="Search..." className="max-w-sm pl-8 h-10" />
+          </div>
           <Table>
-            <TableHeader className=" bg-secondary/90">
+            <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
+                <TableRow key={headerGroup.id} className="bg-secondary/90">
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead className="px-8" key={header.id}>
+                      <TableHead
+                        className="px-8 first:rounded-l-xl last:rounded-r-xl "
+                        key={header.id}
+                      >
                         {header.isPlaceholder
                           ? null
                           : flexRender(
@@ -118,10 +123,14 @@ export function DataTable({ columns, data }: { columns: any; data: any[] }) {
                 table.getRowModel().rows.map((row) => (
                   <TableRow
                     key={row.id}
+                    className="border-b border-dashed"
                     data-state={row.getIsSelected() && "selected"}
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell className="px-8" key={cell.id}>
+                      <TableCell
+                        className="px-8 first:rounded-l-xl last:rounded-r-xl"
+                        key={cell.id}
+                      >
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -134,7 +143,7 @@ export function DataTable({ columns, data }: { columns: any; data: any[] }) {
                 <TableRow>
                   <TableCell
                     colSpan={columns.length}
-                    className="h-24 text-center"
+                    className="h-24 text-center rounded-xl"
                   >
                     No results.
                   </TableCell>

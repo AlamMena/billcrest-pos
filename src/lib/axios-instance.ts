@@ -1,5 +1,7 @@
 import { getToken } from "@/app/(auth)/actions";
+import { toast } from "@/components/ui/use-toast";
 import axios, { AxiosError } from "axios";
+import { redirect, useRouter } from "next/navigation";
 
 const axiosInstance = axios.create({
   baseURL: "https://fastbilling.azurewebsites.net/api",
@@ -22,7 +24,10 @@ axiosInstance.interceptors.response.use(
   },
   function (error) {
     if (error instanceof AxiosError) {
-      console.log("an error with axios has ocurred");
+      const axiosError = error as AxiosError;
+      if (axiosError.response?.status === 401) {
+        redirect("/signin");
+      }
     }
     return Promise.reject(error);
   }

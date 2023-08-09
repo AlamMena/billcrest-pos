@@ -20,8 +20,8 @@ export function ThemeToggle() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
           {/* <SunIcon className="" /> */}
-          <i className="fi fi-rr-brightness text-xl rotate-0 scale-105  transition-all dark:-rotate-90 dark:scale-0"></i>
-          <i className="fi fi-rr-moon-stars text-xl absolute rotate-0 scale-0 transition-all dark:rotate-0 dark:scale-105"></i>
+          <i className="fi fi-rr-brightness text-sm rotate-0 scale-105  transition-all dark:-rotate-90 dark:scale-0"></i>
+          <i className="fi fi-rr-moon-stars text-sm absolute rotate-0 scale-0 transition-all dark:rotate-0 dark:scale-105"></i>
           {/* <MoonIcon className="" /> */}
           <span className="sr-only">Toggle theme</span>
         </Button>
