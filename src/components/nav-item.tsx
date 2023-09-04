@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "./ui/collapsible";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import clsx from "clsx";
 import React from "react";
 import { navItem } from "@/lib/nav-config";
@@ -18,32 +18,26 @@ export function NavItem({
 }) {
   const isActive = item.href?.split("/")[1] === pathname?.split("/")[1];
   const [open, setOpen] = React.useState(false);
-
+  const hasChilds = item.childs!!;
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger asChild>
-        <Link href={item.href ?? "#"} className="w-full">
-          <Button
-            // className="w-full justify-start"
-            className={clsx({
-              ["flex mr-2  w-full px-4 justify-start items-center"]: true,
-              ["text-muted-foreground"]: !isActive,
-            })}
-            variant={isActive ? "secondary" : "ghost"}
-          >
-            <div className="flex w-full justify-between items-center">
-              <div className="flex justify-center items-center space-x-2">
-                <i className={clsx("mr-2 text-xl", item.icon)}></i>
-                <span className="font-normal"> {item.title}</span>
-              </div>
-              {item.childs &&
-                (open ? (
-                  <i className="fi fi-rr-angle-small-down"></i>
-                ) : (
-                  <i className="fi fi-rr-angle-small-right"></i>
-                ))}
-            </div>
-          </Button>
+        <Link
+          href={item.href ?? "#"}
+          className={buttonVariants({
+            variant: isActive ? "secondary" : "ghost",
+            className: "w-full items-center mx-0 py-5",
+          })}
+        >
+          <i className={clsx("mr-2 text-xl ", item.icon)}></i>
+
+          <span className="font-normal w-full">{item.title}</span>
+          {hasChilds &&
+            (open ? (
+              <i className="fi fi-rr-angle-small-down text-muted-foreground"></i>
+            ) : (
+              <i className="fi fi-rr-angle-small-right mt-2 text-muted-foreground"></i>
+            ))}
         </Link>
       </CollapsibleTrigger>
       <CollapsibleContent

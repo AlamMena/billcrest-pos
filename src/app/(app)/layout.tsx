@@ -22,7 +22,7 @@ export default function RootLayout({
       </Head>
       <div className="flex">
         <DesktopNavigation />
-        <div className=" md:ml-60 w-full md:px-8 py-4">
+        <div className=" md:ml-72 mb-8 w-full md:px-8 py-4">
           {/* <MobileNavigation /> */}
           <TopBar />
           <main className=" px-8 max-w-7xl mt-4 w-full container mx-auto">

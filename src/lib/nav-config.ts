@@ -21,21 +21,6 @@ export interface navSection {
 }
 export const navConfig: navSection[] = [
   {
-    title: "Invoice",
-    childs: [
-      {
-        title: "Receptions",
-        icon: "fi fi-rr-truck-loading",
-        href: "/merchandise-reception",
-      },
-      {
-        title: "Invoices",
-        icon: "fi fi-rr-receipt",
-        href: "/invoice",
-      },
-    ],
-  },
-  {
     title: "Inventory",
     childs: [
       {
@@ -89,6 +74,22 @@ export const navConfig: navSection[] = [
       },
     ],
   },
+  {
+    title: "Invoice",
+    childs: [
+      {
+        title: "Receptions",
+        icon: "fi fi-rr-truck-loading",
+        href: "/merchandise-reception",
+      },
+      {
+        title: "Invoices",
+        icon: "fi fi-rr-receipt",
+        href: "/invoice",
+      },
+    ],
+  },
+
   {
     title: "Management",
     childs: [

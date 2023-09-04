@@ -110,14 +110,17 @@ export default function TopBar({ className }: { className?: string }) {
 
       <div className="flex ">
         <Button size="icon" variant="ghost">
-          <i className="fi fi-rr-bell text-"></i>{" "}
+          <i className="fi fi-rr-bell text-lg"></i>{" "}
         </Button>
         <Button size="icon" variant="ghost">
           <i className="fi fi-rr-envelope text-lg "></i>
         </Button>
         <ThemeToggle />
-        <Avatar className="w-8 h-8 ml-4">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <Avatar className="w-8 h-8">
+          <AvatarImage
+            src="https://cdn-icons-png.flaticon.com/512/2202/2202112.png"
+            alt="@shadcn"
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
